@@ -14,9 +14,9 @@ export const HomeContext = createContext({} as HomeContextData);
 export const HomeContextProvider = ({children}: HomeContextProps) => {
     const  [audio, setAudio] = useState<HTMLAudioElement>();
     
-    useEffect{()=>{
-      const initialAudio  = new Audio();
-    }; []};
+    useEffect(()=>{
+      const initialAudio  = new Audio("/audio/audio1.mp3");
+    }, []);
 
     return ( 
          <HomeContext.Provider value={
