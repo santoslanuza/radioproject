@@ -12,10 +12,22 @@ type HomeContextProps = {
 export const HomeContext = createContext({} as HomeContextData); 
 
 export const HomeContextProvider = ({children}: HomeContextProps) => {
-    const  [audio, setAudio] = useState<HTMLAudioElement>();
+    const  [audio , setAudio] = useState<HTMLAudioElement>();
     
     useEffect(()=>{
       const initialAudio  = new Audio("/audio/audio1.mp3");
+      setAudio(initialAudio);
+      initialAudio.play();
+    }, []);
+
+    useEffect(()=>{
+      const initialAudio = new Audio("/audio/audio2.mp3");
+      setAudio(initialAudio); 
+    }, []);
+
+    useEffect(()=>{
+       const initialAudio = new Audio("/audio/audio3.mp3");
+       setAudio(initialAudio);
     }, []);
 
     return ( 
@@ -24,7 +36,7 @@ export const HomeContextProvider = ({children}: HomeContextProps) => {
               audio
             }
         }>
-         {Children}
+          {children}
     </HomeContext.Provider>
 
      );
