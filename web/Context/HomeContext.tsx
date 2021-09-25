@@ -3,6 +3,8 @@ import { getConstantValue } from "typescript";
 import Home from "../pages";
 type HomeContextData = {
     audio: HTMLAudioElement;
+    isPlaying: boolean;
+    playPause: () => void;
 }
 
 type HomeContextProps = {
@@ -13,27 +15,42 @@ export const HomeContext = createContext({} as HomeContextData);
 
 export const HomeContextProvider = ({children}: HomeContextProps) => {
     const  [audio , setAudio] = useState<HTMLAudioElement>();
-    
+    const [isPlaying, setIsPlaying] = useState(true);
+
     useEffect(()=>{
-      const initialAudio  = new Audio("/audio/audio1.mp3");
+      const initialAudio  = new Audio("/audios/audio1.mp3");
       setAudio(initialAudio);
       initialAudio.play();
     }, []);
 
     useEffect(()=>{
-      const initialAudio = new Audio("/audio/audio2.mp3");
-      setAudio(initialAudio); 
+      const initialAudio = new Audio("/audios/audio2.mp3");
+      setAudio(initialAudio);
+      initialAudio.play(); 
     }, []);
 
     useEffect(()=>{
-       const initialAudio = new Audio("/audio/audio3.mp3");
+       const initialAudio = new Audio("/audios/audio3.mp3");
        setAudio(initialAudio);
     }, []);
+
+    const playPause = () => {
+      if(isPlaying){
+         audio.pause();
+         setIsPlaying(false);
+      }
+      else{
+        audio.play();
+        setIsPlaying(true);
+      }
+    }
 
     return ( 
          <HomeContext.Provider value={
             {
-              audio
+              audio,
+              isPlaying,
+              playPause
             }
         }>
           {children}
