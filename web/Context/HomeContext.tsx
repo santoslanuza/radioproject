@@ -23,16 +23,6 @@ export const HomeContextProvider = ({children}: HomeContextProps) => {
       initialAudio.play();
     }, []);
 
-    useEffect(()=>{
-      const initialAudio = new Audio("/audios/audio2.mp3");
-      setAudio(initialAudio);
-      initialAudio.play(); 
-    }, []);
-
-    useEffect(()=>{
-       const initialAudio = new Audio("/audios/audio3.mp3");
-       setAudio(initialAudio);
-    }, []);
 
     const playPause = () => {
       if(isPlaying){
