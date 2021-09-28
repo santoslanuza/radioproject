@@ -11,10 +11,13 @@ export default function Home() {
   } = useContext(HomeContext);
   return (
     <div className={styles.container}>
+      <div className={styles.header}>
+      
       {isPlaying ?
-(<button onClick={playPause}><PauseCircleOutlineIcon /></button>):
+      (<button onClick={playPause}><PauseCircleOutlineIcon /></button>):
       (<button onClick={playPause}><PlayCircleOutlineIcon /></button>)    
-     }    
+     }  
+     </div>  
      </div>
   )
 }
