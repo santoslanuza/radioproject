@@ -35,6 +35,17 @@ export const HomeContextProvider = ({children}: HomeContextProps) => {
   
     }, []);
 
+    useEffect(() => {
+       if (audio){
+         if (isPlaying){
+            audio.play();
+         }
+
+         audio.onended = () => {
+            configMusic((musicIndex + 1) % musicas.length);
+         }
+       }
+    }, [audio]);
 
     const playPause = () => {
       if(isPlaying){
@@ -48,7 +59,10 @@ export const HomeContextProvider = ({children}: HomeContextProps) => {
     }
 
    const configMusic = (index: number) => {
-        alert(index);
+        setMusicIndex(index);
+        audio.pause();
+        const novoAudio = new Audio(`audios/${musicas[index].audio}`);
+        setAudio(novoAudio);
    }
 
     return ( 
