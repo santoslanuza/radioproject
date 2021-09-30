@@ -1,16 +1,38 @@
 .container {
-  width: 1400px;
+  width: calc(3 * 50vh);
   min-height: 100vh;
-  padding: 0 0.5rem;
   display: flex;
   flex-direction: column;
-  height: 100vh;
   margin: 0 auto;
+  background-color: #d3d3d3;
 }
 
 .header {
    height: 50vh;
    background-color: rgb(103, 39, 146);
+   display: flex;
+}
+
+.headerImage {
+  position: relative;
+}
+
+.headerImage img{
+   height: 50vh;
+}
+.headerImage button{
+  position: absolute;
+  bottom: 15%;
+  right: 20px;
+}
+
+.musicItem {
+  background-color: #d3d3d3;
+   margin: 1rem;
+}
+
+.musicItem img{
+   height: 3rem;
 }
 
 .main {
