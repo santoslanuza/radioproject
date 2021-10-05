@@ -12,10 +12,15 @@ type Music = {
 type HomeContextData = {
     audio: HTMLAudioElement;
     isPlaying: boolean;
-    musicas: Music[],
-    musicIndex: number,
+    musicas: Music[];
+    musicIndex: number;
+    duration: number;
+    currentTime: number;
+    volume: number;
     playPause: () => void;
     configMusic: (index: number) => void;
+    configTime: (time: number) => void;
+    configVolume: (volume: number) => void;
 }
 
 type HomeContextProps = {
@@ -28,6 +33,9 @@ export const HomeContextProvider = ({children}: HomeContextProps) => {
     const  [audio , setAudio] = useState<HTMLAudioElement>();
     const [isPlaying, setIsPlaying] = useState(false);
     const [musicIndex, setMusicIndex] = useState (0);
+    const [duration, setDuration] = useState (0);
+    const [currentTime, setCurrentTime] = useState (0);
+    const [volume, setVolume] = useState(1);
 
     useEffect(()=>{
       const initialAudio  = new Audio(`/audios/${musicas[musicIndex].audio}`);
@@ -39,6 +47,14 @@ export const HomeContextProvider = ({children}: HomeContextProps) => {
        if (audio){
          if (isPlaying){
             audio.play();
+         }
+         
+         audio.onloadeddata = () => {
+          setDuration(audio.duration);
+         }
+
+         audio.ontimeupdate = () => {
+           setCurrentTime(audio.currentTime);
          }
 
          audio.onended = () => {
@@ -63,7 +79,18 @@ export const HomeContextProvider = ({children}: HomeContextProps) => {
         audio.pause();
         const novoAudio = new Audio(`audios/${musicas[index].audio}`);
         setAudio(novoAudio);
+        setCurrentTime(0);
    }
+
+    const configTime = (time: number) =>{
+       audio.currentTime = time;
+       setCurrentTime(time);
+    }
+
+    const configVolume = (volume: number) => {
+        audio.volume = volume;
+        setVolume(volume);
+    }
 
     return ( 
          <HomeContext.Provider value={
@@ -72,8 +99,13 @@ export const HomeContextProvider = ({children}: HomeContextProps) => {
               isPlaying,
               musicas,
               musicIndex,
+              duration,
+              currentTime,
+              volume,
               playPause,
-              configMusic
+              configMusic,
+              configTime,
+              configVolume
             }
         }>
           {children}
