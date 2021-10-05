@@ -22,9 +22,10 @@
 }
 .headerImage button{
   position: absolute;
-  bottom: 15%;
-  right: 20px;
+  bottom: 22%;
+  right: 15px;
 }
+
 
 .musicItem {
   background-color: #d3d3d3;
@@ -33,6 +34,45 @@
 
 .musicItem img{
    height: 3rem;
+}
+
+.control{
+  position: absolute;
+  background-color: rgb(24, 13, 13);
+  bottom: 0;
+  width: 100%;
+  opacity: 0.8;
+  padding-bottom: 0.5rem;
+}
+
+.control span {
+   color: #eee;
+   padding-left: 0.5rem;
+   padding-right: 0.5rem;
+}
+
+.time {
+  display: flex;
+  justify-content: space-between;
+}
+
+.timeControl{
+  width: 100%;
+}
+
+.control input {
+  appearance: none;
+  -webkit-appearance: none;
+  height: 0.3rem;
+}
+
+.control input ::-webkit-slider-thumb {
+   appearance: none;
+   -webkit-appearance: none;
+   background-color: #fefefe;
+   height: 0.4rem;
+   width: 0.4rem;
+   border-radius: 100%;
 }
 
 .main {
