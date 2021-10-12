@@ -1,6 +1,5 @@
 .container {
-  width: calc(3 * 50vh);
-  min-height: 100vh;
+  width: 120vh;
   display: flex;
   flex-direction: column;
   margin: 0 auto;
@@ -22,18 +21,31 @@
 }
 .headerImage button{
   position: absolute;
-  bottom: 22%;
+  bottom: 25%;
   right: 15px;
 }
 
+.musicList {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: 13rem;
+}
 
 .musicItem {
   background-color: #d3d3d3;
    margin: 1rem;
+   display: flex;
 }
 
 .musicItem img{
-   height: 3rem;
+   height: 100%;
+}
+
+.musicDetails h1 {
+  color: #292525;
+  margin: 10px;
+  font-size: 1.5rem;
+  font-weight: 400;
 }
 
 .control{
