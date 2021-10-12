@@ -52,6 +52,9 @@ export default function Home() {
          </div>
      </div>
      </div>
+     <div className={styles.nomeRadio}>
+       <h1>Bem-vindo a   Radio Eclectic</h1>
+     </div>
      </div>
       <div className={styles.content}>
         <div className={styles.musicList}> 
