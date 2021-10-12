@@ -54,17 +54,21 @@ export default function Home() {
      </div>
      </div>
       <div className={styles.content}>
+        <div className={styles.musicList}> 
         {
           musicas.map((music, index)=> {
           return (
             <div onClick={() => configMusic(index)} key={music.audio} className={styles.musicItem}>
             <img src={`capas/${music.capa}`} />
+            <div className={styles.musicDetails}>
             <h1>{music.nome}</h1>
+           </div>
            </div>
           )
         }) 
       } 
       </div>
+     </div>
      </div>
   )
 }
